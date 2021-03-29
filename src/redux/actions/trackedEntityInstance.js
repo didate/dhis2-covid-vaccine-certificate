@@ -1,5 +1,5 @@
-import { FETCH_TEIS, RECEIVE_TEIS } from '../types'
-import { teisQuery } from './query'
+import { FETCH_TEIS, RECEIVE_TEIS, FETCH_TEI, RECEIVE_TEI } from '../types'
+import { teisQuery, teiQuery } from './query'
 
 const fetchTeis = (engine, program) => async dispatch => {
 
@@ -16,5 +16,6 @@ const fetchTeis = (engine, program) => async dispatch => {
     })
 
 }
+
 
 export { fetchTeis }

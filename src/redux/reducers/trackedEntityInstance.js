@@ -1,4 +1,4 @@
-import { FETCH_TEIS, RECEIVE_TEIS } from "../types"
+import { FETCH_TEI, FETCH_TEIS, RECEIVE_TEI, RECEIVE_TEIS } from "../types"
 
 
 const initialState = {

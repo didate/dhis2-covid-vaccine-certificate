@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import { fetchTeis } from './trackedEntityInstance'
+import { fetchTeis, fetchTei } from './trackedEntityInstance'
 
 
 export default combineReducers({
-    tei: fetchTeis
+    teis: fetchTeis
 })

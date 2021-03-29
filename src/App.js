@@ -1,39 +1,22 @@
 import React from 'react'
-import { DataQuery } from '@dhis2/app-runtime'
-import i18n from '@dhis2/d2-i18n'
-import classes from './App.module.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Provider } from 'react-redux'
 import store from './redux/store'
 import TrackerView from './views/TrackerView'
+import { HashRouter, Route, Switch } from 'react-router-dom';
+import { Certificate } from './views/Certificate';
 
-const query = {
-    me: {
-        resource: 'me',
-    },
-}
+
 
 const MyApp = () => (
     <Provider store={store}>
-        <div className="container-fluid">
-            <DataQuery query={query}>
-                {({ error, loading, data }) => {
-                    if (error) return <span>ERROR</span>
-                    if (loading) return <span>...</span>
-                    return (
-
-                        /* <h1>
-                            {i18n.t('Hello {{name}}', { name: data.me.name })}
-                        </h1>
-                        <h3>{i18n.t('Welcome to DHIS2!')}</h3> */
-
-
-                        <TrackerView />
-                    )
-                }}
-            </DataQuery>
-        </div>
-    </Provider >
+        <HashRouter>
+            <Switch>
+                <Route exact path='/' component={TrackerView} />
+                <Route exact path='/certificate/:trackedEntityInstance' component={Certificate} />
+            </Switch>
+        </HashRouter>
+    </Provider>
 )
 
 export default MyApp

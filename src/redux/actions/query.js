@@ -12,3 +12,15 @@ export const teisQuery = (programUid) => {
         }
     }
 }
+
+export const teiQuery = (trackedEntityInstance, programUid) => {
+    return {
+        result: {
+            resource: `trackedEntityInstances/${trackedEntityInstance}`,
+            params: {
+                program: programUid,
+                fields: '*'
+            }
+        }
+    }
+}
