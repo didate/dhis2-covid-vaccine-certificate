@@ -1,0 +1,29 @@
+{
+  "name": "dhis2-co-vaccine-certificate",
+  "version": "1.0.0",
+  "description": "",
+  "license": "BSD-3-Clause",
+  "private": true,
+  "scripts": {
+    "build": "d2-app-scripts build",
+    "start": "d2-app-scripts start",
+    "test": "d2-app-scripts test",
+    "deploy": "d2-app-scripts deploy"
+  },
+  "devDependencies": {
+    "@dhis2/cli-app-scripts": "^6.0.1"
+  },
+  "dependencies": {
+    "@dhis2/app-runtime": "^2.8.0",
+    "@dhis2/prop-types": "^2.0.3",
+    "@dhis2/ui": "^6.5.6",
+    "@dhis2/ui-core": "^6.6.0",
+    "bootstrap": "^4.6.0",
+    "react-redux": "^7.2.3",
+    "react-select": "^4.3.0",
+    "reactstrap": "^8.9.0",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.3.0"
+  }
+}
