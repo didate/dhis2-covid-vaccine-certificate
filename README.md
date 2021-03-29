@@ -1,1 +1,1 @@
-Using for generation Covid 19 vaccine certificate
+Using for generation Covid 19 vaccine certificate from dhis 2
