@@ -32,8 +32,9 @@ export const Certificate = () => {
 
     return loading ? <div className={classes.centerItem}><CircularLoader /></div> :
         <div className='container'>
+            <br />
             <ReactToPrint
-                trigger={() => <button className="btn btn-info">Print this out!</button>}
+                trigger={() => <button className="btn btn-info">Imprimer la carte</button>}
                 content={() => componentRef.current}
             />
             <CertificateItem ref={componentRef} person={person} />
