@@ -7,7 +7,7 @@ import { CircularLoader } from '@dhis2/ui-core'
 import classes from '../App.module.css'
 import ReactToPrint from 'react-to-print'
 import CertificateItem from './CertificateItem'
-
+import { Link } from "react-router-dom"
 export const Certificate = () => {
 
     const { trackedEntityInstance } = useParams()
@@ -15,8 +15,8 @@ export const Certificate = () => {
     const componentRef = useRef();
 
 
-    const [person, setPerson] = useState({})
-    const [loading, setLoading] = useState(false)
+    const [person, setPerson] = useState(null)
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         const fetchTei = async () => {
@@ -33,6 +33,7 @@ export const Certificate = () => {
     return loading ? <div className={classes.centerItem}><CircularLoader /></div> :
         <div className='container'>
             <br />
+            <Link to="/" className="btn btn-secondary">Precedent</Link> &nbsp;
             <ReactToPrint
                 trigger={() => <button className="btn btn-info">Imprimer la carte</button>}
                 content={() => componentRef.current}

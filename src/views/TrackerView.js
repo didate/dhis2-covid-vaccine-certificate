@@ -18,9 +18,11 @@ const TrackerView = ({ fetchTeis, teis, loading }) => {
         fetchTeis(engine, COVID_VACCINE_PROGRAM);
     }, [])
 
-    return loading ? <div className={classes.centerItem}><CircularLoader /></div> : <div className="row">
-        <div className="col-sm-12">
-            <ListTei teis={teis} />
+    return loading ? <div className={classes.centerItem}><CircularLoader /></div> : <div className="container-fluid">
+        <div className="row">
+            <div className="col-sm-12">
+                <ListTei teis={teis} />
+            </div>
         </div>
     </div>
 }

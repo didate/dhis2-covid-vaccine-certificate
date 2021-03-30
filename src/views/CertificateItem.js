@@ -3,35 +3,14 @@ import React, { Component } from 'react'
 import './page.css'
 import embleme from '../images/embleme.jpg'
 import anss from '../images/anss.png'
+import { createPersonObject } from "./Person";
 
 export default class CertificateItem extends Component {
 
 
     render() {
-        const { person } = this.props;
 
-
-        const code = person.attributes ? person.attributes.filter(item => item.attribute === 'A1bNxMuvb66')[0].value : ''
-        const nom = person.attributes ? person.attributes.filter(item => item.attribute === 'bbOBxG4F6ja')[0].value : ''
-        const prenom = person.attributes ? person.attributes.filter(item => item.attribute === 'bXEwbxbLR9a')[0].value : ''
-        const telephone = person.attributes ? person.attributes.filter(item => item.attribute === 'cWAOfDiaXRJ')[0].value : ''
-        const quartier = person.attributes ? person.attributes.filter(item => item.attribute === 'wlud1vswX9j')[0].value : ''
-        const region = person.attributes ? person.attributes.filter(item => item.attribute === 'WAvcn9eW1IH')[0].value : ''
-        const district = person.attributes ? person.attributes.filter(item => item.attribute === 'rkQEv1WFZ1u')[0].value : ''
-        const sousPrefecture = person.attributes ? person.attributes.filter(item => item.attribute === 'xCc7On3MR53')[0].value : ''
-
-        const sexe = person.attributes ? person.attributes.filter(item => item.attribute === 'Mj4c07bIa9v')[0].value : ''
-
-        const dateNaissance = person.attributes ? person.attributes.filter(item => item.attribute === 'X2ewZ9nk3r0')[0].value : ''
-
-        let profession = person.attributes ? person.attributes.filter(item => item.attribute === 'oM60JxeliEy')[0].value : ''
-        if (profession === 'Autres') {
-            profession = person.attributes ? person.attributes.filter(item => item.attribute === 'NbzrdyiCgYF')[0].value : ''
-        }
-
-        //const events = person.enrollments[0].events;
-        //console.log(events)
-
+        const person = createPersonObject(this.props)
         return (
 
             <page>
@@ -40,14 +19,16 @@ export default class CertificateItem extends Component {
                         <img src={embleme} alt="Embleme" height={'120px'} width={'120px'} />
                     </div>
                     <div className="col-6 text-center">
-                        <p>REPUBLIQUE DE GUINEE</p>
-                        <p><span style={{ color: 'red' }}>Travail</span>-<span style={{ color: 'orange' }}>Justice</span>-<span style={{ color: 'green' }}>Solidarité</span></p>
-                        <strong>
-                            MINISTERE DE LA SANTE <br />
+                        <small>
+                            <strong> REPUBLIQUE DE GUINEE <br />
+                                <span style={{ color: 'red' }}>Travail</span>-<span style={{ color: 'orange' }}>Justice</span>-<span style={{ color: 'green' }}>Solidarité</span> <br />
+
+                                MINISTERE DE LA SANTE <br />
 
                         AGENCE NATIONALE DE SECURITE SANITAIRE (ANSS) <br />
-                        CARTE DE VACCINATION CONTRE LA COVID-19
+                        CERTIFICAT DE VACCINATION CONTRE LA COVID-19
                         </strong>
+                        </small>
                     </div>
                     <div className="col-3">
                         <img src={anss} alt="ANSS" height={'120px'} width={'160px'} />
@@ -63,55 +44,50 @@ export default class CertificateItem extends Component {
 
 
                     <div className="row">
-
                         <table className="table table-borderless">
                             <tbody>
                                 <tr>
                                     <th>Code</th>
-                                    <td>{code}</td>
-                                    <td rowSpan='3' >
-                                        <QRCode value={code} size={100} className="float-right" />
+                                    <td>{person.code}</td>
+                                    <td rowSpan='3' colSpan='2' >
+                                        <QRCode value={person.code} size={100} className="float-right" />
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <th>Nom</th>
-                                    <td>{nom}</td>
+                                    <td>{person.nom}</td>
                                 </tr>
                                 <tr>
                                     <th>Prenom</th>
-                                    <td>{prenom}</td>
+                                    <td>{person.prenom}</td>
                                 </tr>
                                 <tr>
                                     <th>Sexe</th>
-                                    <td>{sexe}</td>
+                                    <td>{person.sexe}</td>
                                     <th>Date Naissance</th>
-                                    <td>{dateNaissance}</td>
+                                    <td>{person.dateNaissance}</td>
                                 </tr>
                                 <tr>
                                     <th>Téléphone</th>
-                                    <td>{telephone}</td>
+                                    <td>{person.telephone}</td>
                                     <th>Profession</th>
-                                    <td>{profession}</td>
+                                    <td>{person.profession}</td>
                                 </tr>
                                 <tr>
                                     <th>Region</th>
-                                    <td>{region}</td>
+                                    <td>{person.region}</td>
                                     <th>Prefecture</th>
-                                    <td>{district}</td>
+                                    <td>{person.district}</td>
                                 </tr>
                                 <tr>
                                     <th>Sous Prefecture</th>
-                                    <td>{sousPrefecture}</td>
+                                    <td>{person.sousPrefecture}</td>
                                     <th>Quartier</th>
-                                    <td>{quartier}</td>
+                                    <td>{person.quartier}</td>
                                 </tr>
                             </tbody>
                         </table>
-
-
-
-
                     </div>
 
 
@@ -119,8 +95,43 @@ export default class CertificateItem extends Component {
 
 
                     <div className="alert alert-secondary">Vaccination 1</div>
+                    <div className="row">
+                        <table className="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <th>Date de vaccination</th>
+                                    <td>{person.vaccine1.dateVaccination}</td>
+                                    <th>Site de vaccination</th>
+                                    <td>{person.vaccine1.site}</td>
+                                </tr>
+                                <tr>
+                                    <th>Type de vaccin</th>
+                                    <td>{person.vaccine1.typeVaccin}</td>
+                                    <th>Lot</th>
+                                    <td>{person.vaccine1.lot}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                     <div className="alert alert-secondary">Vaccination 2</div>
-
+                    <div className="row">
+                        <table className="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <th>Date de vaccination</th>
+                                    <td>{person.vaccine2.dateVaccination}</td>
+                                    <th>Site de vaccination</th>
+                                    <td>{person.vaccine2.site}</td>
+                                </tr>
+                                <tr>
+                                    <th>Type de vaccin</th>
+                                    <td>{person.vaccine2.typeVaccin}</td>
+                                    <th>Lot</th>
+                                    <td>{person.vaccine2.lot}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </page>
         )
