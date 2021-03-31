@@ -25,3 +25,12 @@
     padding: 0 10px;
     border-bottom: none;
 }
+
+.clickableLink{
+    color: #212529;
+}
+
+.clickableLink:hover, .clickableLink:visited, .clickableLink:link, .clickableLink:active
+{
+    text-decoration: none;
+}

@@ -1,4 +1,4 @@
-import { AUTRE_PROFESSION, CODE, DATE_NAISSANCE, DATE_VACCINATION, DISTRICT, LOT, NOM, PRENOM, PROFESSION, QUARTIER, REGION, SEXE, SITE, SOUS_PREFECTURE, TELEPHONE, TYPE_VACCIN } from "../constant";
+import { AUTRE_PROFESSION, AUTRE_SITE, CODE, DATE_NAISSANCE, DATE_VACCINATION, DISTRICT, LOT, NOM, PRENOM, PROFESSION, QUARTIER, REGION, SEXE, SITE, SOUS_PREFECTURE, TELEPHONE, TYPE_VACCIN } from "../constant";
 
 
 export const createPersonObject = ({ person }) => {
@@ -94,7 +94,9 @@ const getDataValues = (event) => {
         dateVaccination: '',
         typeVaccin: '',
         lot: '',
-        site: ''
+        site: '',
+        autreSite: ''
+
     }
     event.dataValues.forEach(item => {
         switch (item.dataElement) {
@@ -110,8 +112,15 @@ const getDataValues = (event) => {
             case SITE:
                 vaccine.site = item.value
                 break
+            case AUTRE_SITE:
+                vaccine.autreSite = item.value
+                break
 
         }
     })
+
+    if (vaccine.autreSite !== '') {
+        vaccine.site = vaccine.autreSite
+    }
     return vaccine;
 }

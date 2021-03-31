@@ -13,7 +13,6 @@ const Header = ({ headers }) => {
                     return <TableCellHead key={head.name}>{head.column}</TableCellHead>
                 }
             })}
-            <TableCellHead></TableCellHead>
         </TableRowHead>
     </TableHead>
 

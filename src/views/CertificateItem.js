@@ -94,7 +94,7 @@ export default class CertificateItem extends Component {
 
 
 
-                    <div className="alert alert-secondary">Vaccination 1</div>
+                    <div className="alert alert-secondary">Dose 1</div>
                     <div className="row">
                         <table className="table table-borderless">
                             <tbody>
@@ -113,7 +113,7 @@ export default class CertificateItem extends Component {
                             </tbody>
                         </table>
                     </div>
-                    <div className="alert alert-secondary">Vaccination 2</div>
+                    <div className="alert alert-secondary">Dose 2</div>
                     <div className="row">
                         <table className="table table-borderless">
                             <tbody>
