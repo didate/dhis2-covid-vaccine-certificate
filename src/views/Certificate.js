@@ -8,6 +8,7 @@ import classes from '../App.module.css'
 import ReactToPrint from 'react-to-print'
 import CertificateItem from './CertificateItem'
 import { Link } from "react-router-dom"
+import { Button } from '@dhis2/ui'
 export const Certificate = () => {
 
     const { trackedEntityInstance } = useParams()
@@ -33,11 +34,19 @@ export const Certificate = () => {
     return loading ? <div className={classes.centerItem}><CircularLoader /></div> :
         <div className='container'>
             <br />
-            <Link to="/" className="btn btn-secondary">Precedent</Link> &nbsp;
-            <ReactToPrint
-                trigger={() => <button className="btn btn-info">Imprimer la carte</button>}
-                content={() => componentRef.current}
-            />
+            <div className="row">
+                <div className="col-sm-6">
+                    <Link to="/" className="btn btn-secondary">Precedent</Link> &nbsp;
+
+               </div>
+                <div className="col-sm-6">
+                    <ReactToPrint
+                        trigger={() => <Button primary className="float-right">Imprimer le certificat</Button>}
+                        content={() => componentRef.current}
+                    />
+                </div>
+            </div>
+            <br />
             <CertificateItem ref={componentRef} person={person} />
         </div>
 }
